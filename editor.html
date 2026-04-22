@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Shotly - Editor</title>
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+
+  <!-- ── Top bar: brand + export ──────────────────────────────── -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9V5a2 2 0 012-2h4"/>
+        <path d="M15 3h4a2 2 0 012 2v4"/>
+        <path d="M21 15v4a2 2 0 01-2 2h-4"/>
+        <path d="M9 21H5a2 2 0 01-2-2v-4"/>
+        <circle cx="12" cy="12" r="3" fill="#6366f1" opacity="0.2" stroke="#6366f1"/>
+      </svg>
+      <span class="brand">SHOTLY</span>
+      <span class="brand-dot"></span>
+    </div>
+    <div class="topbar-right">
+      <button class="btn-icon" id="btn-undo" title="Undo (Ctrl+Z)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 105.64-9H1"/></svg>
+      </button>
+      <button class="btn-icon" id="btn-redo" title="Redo (Ctrl+Y)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-5.64-9H23"/></svg>
+      </button>
+      <span class="zoom-badge" id="zoom-badge" title="Double-clic fond pour reinitialiser">100%</span>
+      <div class="topbar-sep"></div>
+      <button class="export-btn ghost" id="btn-copy" title="Copy to clipboard">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        <span data-i18n="copyClipboard">Copier</span>
+      </button>
+      <button class="export-btn ghost" id="btn-share" title="Partager (lien Imgur)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span>Partager</span>
+      </button>
+      <div class="topbar-sep"></div>
+      <button class="export-btn ghost" id="btn-save-jpg">JPG</button>
+      <button class="export-btn ghost" id="btn-save-pdf">PDF</button>
+      <button class="export-btn primary" id="btn-save-png">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        PNG
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Main layout: sidebar + canvas ────────────────────────── -->
+  <div class="editor-layout">
+
+    <!-- ── Left Sidebar: tools ─────────────────────────────────── -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="section-label">Outils</div>
+        <div class="tool-grid">
+          <button class="tool-btn" data-tool="select" title="Select (V)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/></svg>
+            <span>Select</span>
+          </button>
+          <button class="tool-btn active" data-tool="rect" title="Rectangle (R)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            <span>Rectangle</span>
+          </button>
+          <button class="tool-btn" data-tool="circle" title="Cercle (C)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+            <span>Cercle</span>
+          </button>
+          <button class="tool-btn" data-tool="arrow" title="Fleche (A)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <span>Fleche</span>
+          </button>
+          <button class="tool-btn" data-tool="line" title="Ligne (L)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="19" x2="19" y2="5"/></svg>
+            <span>Ligne</span>
+          </button>
+          <button class="tool-btn" data-tool="freehand" title="Dessin libre (F)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19c-4 0-6-2-6-5s3-7 8-7 8 3 8 6-3 6-6 6c-2 0-3-1-3-2s1-2 3-2"/></svg>
+            <span>Libre</span>
+          </button>
+          <button class="tool-btn" data-tool="text" title="Texte (T)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="8" y1="20" x2="16" y2="20"/></svg>
+            <span>Texte</span>
+          </button>
+          <button class="tool-btn" data-tool="blur" title="Flou (B)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" opacity="0.15" fill="currentColor"/><line x1="4" y1="4" x2="20" y2="20" stroke-dasharray="3 3" opacity="0.4"/><line x1="20" y1="4" x2="4" y2="20" stroke-dasharray="3 3" opacity="0.4"/></svg>
+            <span>Flou</span>
+          </button>
+          <button class="tool-btn" data-tool="highlight" title="Surbrillance (H)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="20" height="7" rx="1.5" fill="#facc15" opacity="0.35" stroke="none"/><line x1="5" y1="12.5" x2="19" y2="12.5" stroke-width="1.5"/></svg>
+            <span>Surbrillance</span>
+          </button>
+          <button class="tool-btn" data-tool="step" title="Etape (N)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.12"/>
+              <text x="12" y="16.5" text-anchor="middle" fill="currentColor" font-size="13" font-weight="700" stroke="none" font-family="system-ui">1</text>
+            </svg>
+            <span>Etape</span>
+          </button>
+          <button class="tool-btn" data-tool="crop" title="Recadrer (X)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.13 1L6 16a2 2 0 002 2h15"/><path d="M1 6.13L16 6a2 2 0 012 2v15"/></svg>
+            <span>Recadrer</span>
+          </button>
+          <button class="tool-btn" data-tool="ocr" title="Extraire texte (O)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3"/><path d="M4 17v3h16v-3"/><path d="M7 10h1.5c.8 0 1.5.7 1.5 1.5S9.3 13 8.5 13H7v-3zm0 3v3"/><path d="M14 10h-1v6h1c1.7 0 3-1.3 3-3s-1.3-3-3-3z"/></svg>
+            <span>OCR</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="sidebar-sep"></div>
+
+      <!-- Properties -->
+      <div class="sidebar-section">
+        <div class="section-label" data-i18n="strokeColor">Couleur</div>
+        <div class="color-row">
+          <input type="color" id="stroke-color" value="#6366f1" class="color-swatch">
+          <div class="color-presets">
+            <button class="preset" data-color="#ff3b30" style="background:#ff3b30"></button>
+            <button class="preset" data-color="#ff9500" style="background:#ff9500"></button>
+            <button class="preset" data-color="#ffcc00" style="background:#ffcc00"></button>
+            <button class="preset" data-color="#34c759" style="background:#34c759"></button>
+            <button class="preset" data-color="#6366f1" style="background:#6366f1"></button>
+            <button class="preset" data-color="#a855f7" style="background:#a855f7"></button>
+            <button class="preset" data-color="#171717" style="background:#171717"></button>
+            <button class="preset" data-color="#ffffff" style="background:#ffffff; border:1px solid #ddd"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label" data-i18n="strokeWidth">Epaisseur</div>
+        <div class="slider-row">
+          <input type="range" id="stroke-width" min="1" max="20" value="3" class="slider">
+          <span id="stroke-width-val" class="slider-val">3</span>
+        </div>
+      </div>
+
+      <!-- Text props (shown when text tool active) -->
+      <div id="text-props" style="display:none">
+        <div class="sidebar-sep"></div>
+        <div class="sidebar-section">
+          <div class="section-label" data-i18n="fontSize">Taille texte</div>
+          <div class="slider-row">
+            <input type="range" id="font-size" min="12" max="96" value="36" class="slider">
+            <span id="font-size-val" class="slider-val">36</span>
+          </div>
+        </div>
+        <div class="sidebar-section">
+          <div class="section-label">Fond du texte</div>
+          <div class="checkbox-row">
+            <label class="toggle-label">
+              <input type="checkbox" id="text-bg-enabled">
+              <span>Activer</span>
+            </label>
+            <input type="color" id="text-bg-color" value="#ffffff" class="color-swatch small">
+          </div>
+        </div>
+      </div>
+
+      <!-- Crop bar (shown when crop tool active) -->
+      <div id="crop-bar" style="display:none">
+        <div class="sidebar-sep"></div>
+        <div class="sidebar-section">
+          <button class="action-btn primary" id="btn-crop-apply" data-i18n="applyCrop">Appliquer</button>
+          <button class="action-btn" id="btn-crop-cancel" data-i18n="cancelCrop">Annuler</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── Canvas Area ────────────────────────────────────────── -->
+    <main class="canvas-container" id="canvas-container">
+      <canvas id="canvas"></canvas>
+    </main>
+  </div>
+
+  <!-- Text input overlay (hidden) -->
+  <textarea id="text-input" class="text-input-overlay" style="display:none"></textarea>
+
+  <!-- OCR result modal -->
+  <div id="ocr-modal" class="ocr-modal" style="display:none">
+    <div class="ocr-modal-content">
+      <div class="ocr-modal-header">
+        <span class="ocr-modal-title">Texte extrait</span>
+        <button class="btn-icon" id="ocr-close" title="Fermer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <textarea id="ocr-result" class="ocr-result" readonly></textarea>
+      <div class="ocr-modal-footer">
+        <button class="action-btn" id="ocr-copy">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copier le texte
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="lib/jspdf.umd.min.js"></script>
+  <script src="lib/tesseract.min.js"></script>
+  <script src="editor.js"></script>
+</body>
+</html>

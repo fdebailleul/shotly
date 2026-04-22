@@ -1,0 +1,47 @@
+Shotly — Capture & Annotation
+
+Capturez n'importe quoi, annotez en quelques secondes.
+
+Shotly est un outil de capture d'ecran rapide et complet, directement dans Chrome. Pas de compte, pas de cloud — vos captures restent sur votre machine.
+
+FONCTIONNALITES :
+
+• Zone visible — Capturez l'onglet actif en un clic
+• Page entiere — Scroll automatique et assemblage intelligent
+• Zone selectionnee — Selectionnez exactement ce que vous voulez
+• Ecran & Fenetre — Capturez n'importe quelle fenetre ou votre ecran
+• Capture differee — Minuterie de 3, 5 ou 10 secondes
+• Annotation complete — Fleches, rectangles, cercles, texte, flou, surbrillance
+• Etapes numerotees — Cercles 1, 2, 3... pour tutoriels et rapports de bugs
+• Recadrage — Redecoupez votre capture apres annotation
+• Export multiple — PNG, JPG, PDF ou copie directe dans le presse-papiers
+• Nommage intelligent — Fichiers nommes automatiquement avec le titre de la page et la date
+• Zoom — Molette pour zoomer/dezoomer sur votre capture
+• Raccourcis clavier — Alt+Shift+V (visible), Alt+Shift+F (page), Alt+Shift+A (zone)
+
+100% HORS LIGNE — Aucune donnee collectee, aucun serveur contact. Vos captures ne quittent jamais votre ordinateur.
+
+---
+
+Shotly — Screenshot & Annotation (English)
+
+Capture anything, annotate in seconds.
+
+Shotly is a fast, full-featured screenshot tool built right into Chrome. No account, no cloud — your captures stay on your machine.
+
+FEATURES:
+
+• Visible area — Capture the active tab in one click
+• Full page — Auto-scroll and smart stitching
+• Selected area — Select exactly what you need
+• Screen & Window — Capture any window or your full screen
+• Delayed capture — 3, 5, or 10 second timer
+• Full annotation — Arrows, rectangles, circles, text, blur, highlight
+• Numbered steps — 1, 2, 3... circles for tutorials and bug reports
+• Crop — Trim your capture after annotating
+• Multiple export — PNG, JPG, PDF, or direct clipboard copy
+• Smart naming — Files auto-named with page title and date
+• Zoom — Mouse wheel zoom on your capture
+• Keyboard shortcuts — Alt+Shift+V (visible), Alt+Shift+F (full), Alt+Shift+A (area)
+
+100% OFFLINE — No data collected, no servers contacted. Your captures never leave your computer.

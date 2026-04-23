@@ -154,15 +154,18 @@ async function captureFullPage(tab) {
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
-      const x = col * viewportWidth;
-      const y = row * viewportHeight;
+      // For the last row/col, clamp scroll so we capture exactly
+      // the remaining strip instead of overlapping with previous tiles
+      const x = (col === cols - 1) ? Math.max(0, scrollWidth - viewportWidth) : col * viewportWidth;
+      const y = (row === rows - 1) ? Math.max(0, scrollHeight - viewportHeight) : row * viewportHeight;
       await chrome.scripting.executeScript({
         target: { tabId: tab.id },
         func: (sx, sy) => window.scrollTo(sx, sy),
         args: [x, y]
       });
-      await sleep(350); // let paint settle — respect MAX_CAPTURE_VISIBLE_TAB_CALLS_PER_SECOND
-      const dataUrl = await chrome.tabs.captureVisibleTab(tab.windowId, { format: 'png' });
+      // Wait for paint + respect MAX_CAPTURE_VISIBLE_TAB_CALLS_PER_SECOND (2/s)
+      await sleep(600);
+      const dataUrl = await captureWithRetry(tab.windowId, 3);
       parts.push({ dataUrl, x, y, col, row });
     }
   }
@@ -415,4 +418,16 @@ async function openEditor(dataUrl, pageTitle) {
 // ── Helpers ───────────────────────────────────────────────────────
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
+}
+
+async function captureWithRetry(windowId, maxRetries) {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await chrome.tabs.captureVisibleTab(windowId, { format: 'png' });
+    } catch (e) {
+      if (attempt >= maxRetries || !e.message.includes('MAX_CAPTURE_VISIBLE_TAB')) throw e;
+      // Backoff : 750ms, 1500ms, 3000ms
+      await sleep(750 * Math.pow(2, attempt));
+    }
+  }
 }

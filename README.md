@@ -102,7 +102,7 @@ shotly/
 - **Chrome Extension Manifest V3** — service worker, offscreen documents, CSP strict
 - **Canvas 2D API** — annotation, zoom, resize, blur pixelise
 - **IndexedDB** — historique des captures avec vignettes
-- **Tesseract.js v5.1.1** — OCR cote client (WASM, `OffscreenCanvas` dans le worker)
+- **Tesseract.js v5.1.1** — OCR côté client (WASM, `OffscreenCanvas` dans le worker)
 - **jsPDF** — export PDF
 - **Imgur API** — partage anonyme (Client-ID)
 
@@ -110,7 +110,7 @@ shotly/
 
 ## Vie privée
 
-Shotly est **100% hors ligne**. Aucune donnée n'est collectée, aucun serveur n'est contacte (sauf partage Imgur explicite et téléchargement des données de langue OCR au premier usage). Vos captures ne quittent jamais votre ordinateur.
+Shotly est **100% hors ligne**. Aucune donnée n'est collectée, aucun serveur n'est contacté (sauf partage Imgur explicite et téléchargement des données de langue OCR au premier usage). Vos captures ne quittent jamais votre ordinateur.
 
 Voir [privacy.html](privacy.html) pour la politique complète.
 

@@ -108,7 +108,7 @@ shotly/
 
 ---
 
-## Vie privee
+## Vie privée
 
 Shotly est **100% hors ligne**. Aucune donnée n'est collectée, aucun serveur n'est contacte (sauf partage Imgur explicite et téléchargement des données de langue OCR au premier usage). Vos captures ne quittent jamais votre ordinateur.
 

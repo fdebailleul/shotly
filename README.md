@@ -2,34 +2,34 @@
 
 Capturez n'importe quoi, annotez en quelques secondes.
 
-Shotly est une extension Chrome (Manifest V3) de capture d'ecran et d'annotation, rapide et complete. Aucun compte requis, aucun cloud — vos captures restent sur votre machine.
+Shotly est une extension Chrome (Manifest V3) de capture d'écran et d'annotation, rapide et complète. Aucun compte requis, aucun cloud - vos captures restent sur votre machine.
 
 **[Voir la landing page](https://fdebailleul.github.io/shotly/)** · **[Chrome Web Store](https://chrome.google.com/webstore)** *(en attente de validation)*
 
 ---
 
-## Fonctionnalites
+## Fonctionnalités
 
 **Capture**
-- Zone visible — onglet actif en un clic (`Alt+Shift+V`)
-- Page entiere — scroll automatique et assemblage intelligent (`Alt+Shift+F`)
-- Zone selectionnee — selection libre au pixel pres (`Alt+Shift+A`)
-- Ecran & Fenetre — capturez n'importe quelle fenetre ou l'ecran complet
-- Capture differee — minuterie 3, 5 ou 10 secondes
-- Annoter image locale — ouvrez un fichier image dans l'editeur
+- Zone visible : onglet actif en un clic (`Alt+Shift+V`)
+- Page entière : scroll automatique et assemblage intelligent (`Alt+Shift+F`)
+- Zone sélectionnée : sélection libre au pixel près (`Alt+Shift+A`)
+- Ecran & Fenêtre : capturez n'importe quelle fenêtre ou l'écran complet
+- Capture différée : minuterie 3, 5 ou 10 secondes
+- Annoter image locale : ouvrez un fichier image dans l'éditeur
 
 **Annotation**
-- Fleches, rectangles, cercles, lignes, dessin libre
-- Texte avec fond optionnel et taille reglable
+- Flèches, rectangles, cercles, lignes, dessin libre
+- Texte avec fond optionnel et taille réglable
 - Flou / pixelisation pour masquer des informations sensibles
-- Surbrillance pour mettre en evidence
-- Etapes numerotees (1, 2, 3...) pour tutoriels et rapports de bugs
-- Selection, deplacement et redimensionnement des annotations
-- Recadrage apres annotation
+- Surbrillance pour mettre en évidence
+- Etapes numerotées (1, 2, 3...) pour tutoriels et rapports de bugs
+- Sélection, déplacement et redimensionnement des annotations
+- Recadrage après annotation
 
 **OCR**
-- Extraction de texte depuis une zone selectionnee (francais + anglais)
-- Tesseract.js v5.1.1 integre, 100% cote client
+- Extraction de texte depuis une zone selectionnée (francais + anglais)
+- Tesseract.js v5.1.1 integre, 100% côté client
 
 **Partage & Export**
 - Export PNG, JPG, PDF
@@ -40,13 +40,13 @@ Shotly est une extension Chrome (Manifest V3) de capture d'ecran et d'annotation
 **Historique**
 - Sauvegarde automatique de chaque capture (IndexedDB)
 - Page historique avec grille de vignettes
-- Selection multiple, suppression par lot
-- Bouton "Derniere capture" dans le popup pour reouvrir en 1 clic
+- Sélection multiple, suppression par lot
+- Bouton "Dernière capture" dans le popup pour réouvrir en 1 clic
 
 **UX**
 - Zoom molette + badge pourcentage
 - Raccourcis clavier complets (V, R, C, A, L, F, T, B, H, N, X, O)
-- Design glassmorphism indigo coherent partout
+- Design glassmorphism indigo cohérent partout
 - Bilingue francais / anglais
 - Page d'onboarding au premier lancement
 
@@ -54,18 +54,18 @@ Shotly est une extension Chrome (Manifest V3) de capture d'ecran et d'annotation
 
 ## Installation (developpement)
 
-1. Clonez ce depot :
+1. Clonez ce dépôt :
    ```bash
    git clone https://github.com/fdebailleul/shotly.git
    ```
 
 2. Ouvrez Chrome et allez sur `chrome://extensions/`
 
-3. Activez le **Mode developpeur** (toggle en haut a droite)
+3. Activez le **Mode developpeur** (toggle en haut à droite)
 
-4. Cliquez **Charger l'extension non empaquetee** et selectionnez le dossier du projet
+4. Cliquez **Charger l'extension non empaquetée** et sélectionnez le dossier du projet
 
-5. L'icone Shotly apparait dans la barre d'extensions — c'est pret !
+5. L'icone Shotly apparait dans la barre d'extensions - Epinglez, c'est prêt !
 
 ---
 
@@ -110,9 +110,9 @@ shotly/
 
 ## Vie privee
 
-Shotly est **100% hors ligne**. Aucune donnee n'est collectee, aucun serveur n'est contacte (sauf partage Imgur explicite et telechargement des donnees de langue OCR au premier usage). Vos captures ne quittent jamais votre ordinateur.
+Shotly est **100% hors ligne**. Aucune donnée n'est collectée, aucun serveur n'est contacte (sauf partage Imgur explicite et téléchargement des données de langue OCR au premier usage). Vos captures ne quittent jamais votre ordinateur.
 
-Voir [privacy.html](privacy.html) pour la politique complete.
+Voir [privacy.html](privacy.html) pour la politique complète.
 
 ---
 

@@ -1080,7 +1080,7 @@
 
       redraw();
       document.querySelector('[data-tool="select"]').click();
-      showToast('Recadrage applique');
+      showToast('Recadrage appliqué');
     };
     img.src = tempCanvas.toDataURL('image/png');
   }
@@ -1235,7 +1235,7 @@
       a.download = smartFilename(ext);
       a.click();
       URL.revokeObjectURL(url);
-      showToast(`${ext.toUpperCase()} enregistre`);
+      showToast(`${ext.toUpperCase()} enregistré`);
       redraw();
     }, mime, quality);
   }
@@ -1253,13 +1253,13 @@
       const pdf = new jsPDF({ orientation, unit: 'px', format: [w, h] });
       pdf.addImage(imgData, 'JPEG', 0, 0, w, h);
       pdf.save(smartFilename('pdf'));
-      showToast('PDF enregistre');
+      showToast('PDF enregistré');
     } else {
       // Fallback: open image in new tab for print-to-PDF
       const win = window.open();
       win.document.write(`<img src="${imgData}" style="max-width:100%">`);
-      win.document.title = 'Captur Ecran - PDF';
-      showToast('Utilisez Imprimer > PDF');
+      win.document.title = 'Shotly - PDF';
+      showToast('Utilisez Imprimer \u203a PDF');
     }
     redraw();
   }
@@ -1269,7 +1269,7 @@
     try {
       const blob = await new Promise(r => c.toBlob(r, 'image/png'));
       await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-      showToast('Copie dans le presse-papiers');
+      showToast('Copié dans le presse-papiers');
     } catch (e) {
       console.error('Clipboard error:', e);
       showToast('Erreur de copie');
@@ -1349,11 +1349,11 @@
 
       // Copy link to clipboard
       await navigator.clipboard.writeText(link);
-      showToast('Lien copie : ' + link);
+      showToast('Lien copié\u00a0: ' + link);
 
     } catch (e) {
       console.error('Imgur upload error:', e);
-      showToast('Erreur upload : ' + e.message, true);
+      showToast('Erreur upload\u00a0: ' + e.message, true);
     } finally {
       btn.disabled = false;
       btn.innerHTML = originalHTML;
@@ -1455,7 +1455,7 @@
 
       const trimmed = text.trim();
       if (!trimmed) {
-        showToast('Aucun texte detecte', true);
+        showToast('Aucun texte détecté', true);
         return;
       }
 
@@ -1467,7 +1467,7 @@
       ocrRect = null;
       redraw();
       console.error('OCR error:', err);
-      showToast('Erreur OCR : ' + err.message, true);
+      showToast('Erreur OCR\u00a0: ' + err.message, true);
     }
   }
 
@@ -1495,7 +1495,7 @@
     const text = document.getElementById('ocr-result').value;
     try {
       await navigator.clipboard.writeText(text);
-      showToast('Texte copie dans le presse-papiers');
+      showToast('Texte copié dans le presse-papiers');
       document.getElementById('ocr-modal').style.display = 'none';
     } catch (e) {
       showToast('Erreur de copie', true);

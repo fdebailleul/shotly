@@ -1,5 +1,5 @@
 {
-  "extName": { "message": "Shotly - Capture & Annotation" },
+  "extName": { "message": "Shotly – Capture & Annotation" },
   "extDescription": { "message": "Capturez, annotez et partagez vos captures d'\u00e9cran en un clic." },
   "cmdCaptureVisible": { "message": "Capturer la zone visible" },
   "cmdCaptureFull": { "message": "Capturer la page enti\u00e8re" },

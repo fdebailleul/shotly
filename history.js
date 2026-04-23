@@ -138,7 +138,7 @@
     ids.forEach(id => selected.delete(id));
     captures = captures.filter(c => !ids.includes(c.id));
     render();
-    showToast(ids.length === 1 ? 'Capture supprimee' : `${ids.length} captures supprimees`);
+    showToast(ids.length === 1 ? 'Capture supprimée' : `${ids.length} captures supprimées`);
   }
 
   document.getElementById('btn-delete-selected').addEventListener('click', () => {

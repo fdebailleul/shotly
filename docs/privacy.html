@@ -52,9 +52,43 @@
       color: #1a1a1a;
     }
     a { color: #6366f1; }
+    .topnav {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 20px 48px 0;
+    }
+    .topnav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    .topnav a:hover { color: #6366f1; }
+    .nav-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #6366f1;
+    }
   </style>
 </head>
 <body>
+  <div class="topnav">
+    <a href="https://fdebailleul.github.io/shotly/">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9V5a2 2 0 012-2h4"/>
+        <path d="M15 3h4a2 2 0 012 2v4"/>
+        <path d="M21 15v4a2 2 0 01-2 2h-4"/>
+        <path d="M9 21H5a2 2 0 01-2-2v-4"/>
+        <circle cx="12" cy="12" r="3" fill="#6366f1" opacity="0.2" stroke="#6366f1"/>
+      </svg>
+      SHOTLY
+      <span class="nav-dot"></span>
+    </a>
+  </div>
   <div class="container">
     <h1>Politique de confidentialité</h1>
     <p class="updated">Dernière mise à jour&nbsp;: 30 avril 2026</p>

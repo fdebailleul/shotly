@@ -4,7 +4,7 @@ Capturez n'importe quoi, annotez en quelques secondes.
 
 Shotly est une extension Chrome (Manifest V3) de capture d'écran et d'annotation, rapide et complète. Aucun compte requis, pas de cloud : vos captures restent sur votre machine.
 
-**[Voir la landing page](https://fdebailleul.github.io/shotly/)** · **[Chrome Web Store](https://chrome.google.com/webstore)** *(en attente de validation)*
+**[Voir la landing page](https://fdebailleul.github.io/shotly/)** · **[Chrome Web Store](https://chromewebstore.google.com/detail/shotly-%E2%80%93-capture-annotati/ebkfmodannnpgbjfilkbifkkbgbkbbdl)**
 
 ---
 
